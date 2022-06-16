@@ -1,0 +1,57 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+
+<style>
+    body{
+    font-family: 'Lato', global_font_string;
+    font-weight: 500;
+    background-image: url('https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070__480.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: whitesmoke;
+    
+    }
+    p{
+        color: whitesmoke;
+        font-size: xx-large;
+    }
+</style>
+
+<div class="container-fluid">
+
+    <div class="home">
+        <h1 class="text-center mt-5">Jirani Bora</h1>
+        <div class="" style=" margin: 2%; padding: 5%;">
+
+            <div class="forms">
+                <form class="me-auto search-form " target="_self" action="{% url 'search' %}">
+                    <div class="input-group ">
+
+                        <input type="text" class="form-control" placeholder="Search Business by name"
+                            name="search_term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search" aria-hidden="true"
+                                    style="color: whitesmoke;"></i></button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="text-center">
+             <form action="/create_hood" class="mb-3">
+            <input type="submit" class="btn btn-outline-black bg-#495867 text-white rounded-pill b-text"
+                value="Add Your Neighborhood" />
+           </form>
+
+        </div>
+        
+        
+
+
+    </div>
+</div>
+
+{% endblock %}
