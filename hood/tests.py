@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
-from .models import NeighborHood, Profile
+from .models import NeighborHood, Profile, Business
 
 class ProfileTestCase(TestCase):
     def setUp(self):
@@ -13,8 +13,19 @@ class ProfileTestCase(TestCase):
         profiles = Profile.objects.all()
         self.assertTrue(len(profiles) > 0)
 
+class BusinessTestCase(TestCase):
+    def setUp(self):
+        user = User.objects.create_user(username="melo",email="melo@gmail.com",password="983di")
+        self.business = Business(user=user,name="babyshop",photo="/image",email="baby@gmail.com")
+    def test_instance(self):
+        self.assertTrue(isinstance(self.business,Business))
+    def save_business_method(self):
+        self.business.save_business()
+        business = Business.objects.all()
+        self.assertTrue(len(business) > 0)
 
-class NeighborTestClass(TestCase):
+
+""" class NeighborTestClass(TestCase):
     def setUp(self):
         user = User.objects.create_user(username="john",email="john@gmail.com",password="pass123")
         self.neighbor = NeighborHood(name = 'Embakasi',location = 'Nairobi',admin = user,about='This has been the best neighborhood',administrator='John doe',doctor_no='0937293',police_num='0292002')
@@ -27,4 +38,4 @@ class NeighborTestClass(TestCase):
     def test_save_hood(self):
         self.neighbor.save_hood()
         my_hood =NeighborHood.objects.all()
-        self.assertTrue(len(my_hood) > 0)
+        self.assertTrue(len(my_hood) > 0) """
