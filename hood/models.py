@@ -45,7 +45,7 @@ class NeighborHood(models.Model):
 
     def delete_neighborhood(self):
         self.delete()
-        
+
     def update_neighborhood(self):
         self.update()
     def update_occupants(self):
@@ -54,6 +54,7 @@ class NeighborHood(models.Model):
     @classmethod
     def find_neighborhood(cls, neighborhood_id):
         return cls.objects.filter(id=neighborhood_id)
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',null=True)
     profile_photo = CloudinaryField("image",null=True)
@@ -85,25 +86,25 @@ class Post(models.Model):
     neighborhood = models.ForeignKey(NeighborHood, on_delete=models.CASCADE, null=True)
     created_on = models.DateTimeField(auto_now_add=True,null=True)
     updated_on = models.DateTimeField(auto_now=True,null=True)
-    
+
     class Meta:
         ordering = ['-pk']
-        
+
     def __str__(self):
         return f'{self.title} Post'
-    
+
     def delete_post(self):
         self.delete()
-    
+
 
     def create_post(self):
         self.save()
-        
+
     def update_post(self):
         self.update()
 
-    
-    
+
+
 class Business(models.Model):
     photo = CloudinaryField("image",null=True)
     name = models.CharField(max_length=50)
@@ -140,4 +141,3 @@ class Business(models.Model):
         business = cls.objects.get(id=id)
         return business
 
-  
