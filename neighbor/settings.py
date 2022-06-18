@@ -81,12 +81,19 @@ WSGI_APPLICATION = 'neighbor.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'hood',
         'USER': 'moringa',
         'PASSWORD': 'james',
+    }
+} """
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
@@ -135,8 +142,8 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-cloudinary.config( 
-  cloud_name = "makove", 
-  api_key = "515347984553444", 
-  api_secret = "tA2UtKniO4JgaSWBBvLT-y3U_2s" 
+cloudinary.config(
+  cloud_name = "makove",
+  api_key = "515347984553444",
+  api_secret = "tA2UtKniO4JgaSWBBvLT-y3U_2s"
 )
